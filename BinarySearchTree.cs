@@ -72,5 +72,25 @@ namespace DataStructures_BinarySearchTree
         {
             Console.WriteLine($"\n\nSize of Binary Tree : {(1 + leftCount + rightCount)}");
         }
+
+        public BinarySearchTree<T> FindElement(T element, BinarySearchTree<T> node)
+        {
+            if (node != null)
+            {
+                if (element.Equals(node.NodeData))
+                {
+                    return node;
+                }
+                if (element.CompareTo(node.NodeData) < 0)
+                {
+                    return FindElement(element, node.LeftTree);
+                }
+                else
+                {
+                    return FindElement(element, node.RightTree);
+                }
+            }
+            return null;
+        }
     }
 }
